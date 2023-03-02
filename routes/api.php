@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'worker'], function() {
-    Route::get('clock-ins', 'App\\Http\\Controllers\\Api\\AttendanceController@index');
-    Route::post('clock-in', 'App\\Http\\Controllers\\Api\\AttendanceController@clockIn');
+    Route::get('clock-ins', 'App\\Http\\Controllers\\Api\\AttendanceController@index')->name('attendance.index');
+    Route::post('clock-in', 'App\\Http\\Controllers\\Api\\AttendanceController@clockIn')->name('attendance.clockIn');
 });
