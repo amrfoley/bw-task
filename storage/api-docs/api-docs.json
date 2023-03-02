@@ -1,0 +1,139 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Worker Api",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/worker/clock-ins": {
+            "get": {
+                "tags": [
+                    "List clock-ins"
+                ],
+                "summary": "Returns worker's clock-ins list",
+                "description": "Returns list of worker clock-ins",
+                "operationId": "woerker_id",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/worker/clock-in": {
+            "post": {
+                "tags": [
+                    "clockIn"
+                ],
+                "summary": "clock-in to work location",
+                "description": "Worker can clock-in the time he/she arrive to work location",
+                "operationId": "clockIn",
+                "requestBody": {
+                    "description": "clock-in params",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "worker_id",
+                                    "timestamp",
+                                    "latitude",
+                                    "longotude"
+                                ],
+                                "properties": {
+                                    "worker_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "timestamp": {
+                                        "type": "integer",
+                                        "example": "1677756960"
+                                    },
+                                    "latitude": {
+                                        "type": "decimal",
+                                        "example": "30.0493558"
+                                    },
+                                    "longitude": {
+                                        "type": "decimal",
+                                        "example": "31.2403066"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "You already clocked in today!"
+                                                        }
+                                                    },
+                                                    "worker_id": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "The worker id field must be an integer."
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "format": "query"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
