@@ -84,9 +84,9 @@ abstract class BaseRepository
      * @param string $orderBy
      * @param string $sort
      * 
-     * @return Model
+     * @return Collection
      */
-    public function findWith(array $where = [], array $with = [], string $orderBy = 'id', string $sort = 'desc'): Model
+    public function findWith(array $where = [], array $with = [], string $orderBy = 'id', string $sort = 'desc'): Collection
     {
         return $this->model->with($with)->where($where)->orderBy($orderBy, $sort)->get();
     }

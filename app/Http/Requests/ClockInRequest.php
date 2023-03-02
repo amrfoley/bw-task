@@ -24,7 +24,7 @@ class ClockInRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'worker_id' => ['required', 'int', 'exists:users,id'],
+            'worker_id' => ['required', 'int'],
             'timestamp' => ['required', 'numeric', new Timestamp],
             'latitude'  => ['required', 'decimal:-90,90'],
             'longitude' => ['required', 'decimal:-180,180'],

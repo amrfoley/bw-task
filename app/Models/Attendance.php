@@ -16,6 +16,8 @@ class Attendance extends Model
         'clock_out' => 'datetime:Y-m-d H:00'
     ];
 
+    CONST ALLOWED_RADIUS = 2;
+    
     /**
      * relationship to worker with the User class
      * 
