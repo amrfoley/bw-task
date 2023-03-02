@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('worker_id');
             $table->foreignId('work_place_id');
             $table->timestamp('clock_in');
-            $table->timestamp('clock_out');
+            $table->timestamp('clock_out')->nullable();
             $table->timestamps();
         });
     }
