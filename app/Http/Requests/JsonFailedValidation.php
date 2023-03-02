@@ -7,6 +7,11 @@ use Illuminate\Contracts\Validation\Validator;
 
 trait JsonFailedValidation
 {
+    /**
+     * @param Validator $validator
+     * 
+     * @throws FailedResponse
+     */
     protected function failedValidation(Validator $validator)
     {
         $response = new Response([

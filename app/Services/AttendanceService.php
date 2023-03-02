@@ -22,6 +22,7 @@ class AttendanceService
      * @param User $user
      * @param int $time
      * 
+     * @throws FailedResponse
      * @return Attendance
      */
     public function clockIn(User $user, int $time): Attendance

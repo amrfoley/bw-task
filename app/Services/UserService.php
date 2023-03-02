@@ -16,6 +16,12 @@ class UserService
     {
     }
 
+    /**
+     * @param int $userId
+     * 
+     * @throws FailedResponse
+     * @return User
+     */
     public function fetchfromApi(int $userId)
     {
         $user = $this->userRepository->findWith(['id' => $userId], ['workPlace']);

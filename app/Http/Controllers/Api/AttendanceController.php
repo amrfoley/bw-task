@@ -23,9 +23,14 @@ class AttendanceController extends Controller
     ) {
     }
 
+    /**
+     * @param Request $request
+     * 
+     * @return [type]
+     */
     public function index(Request $request)
     {
-        $user = $this->userService->fetchfromApi($request->worker_id);
+        $user = $this->userService->fetchfromApi($request->worker_id ?? 0);
 
         $attendances = $this->attendanceService->workerClockIns($user);
 
@@ -35,6 +40,7 @@ class AttendanceController extends Controller
     /**
      * @param ClockInRequest $request
      * 
+     * @throws FailedResponse
      * @return [type]
      */
     public function clockIn(ClockInRequest $request)
