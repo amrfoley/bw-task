@@ -25,4 +25,14 @@ class AttendanceRepository extends BaseRepository
     {
         return $this->model->where('worker_id', $workerId)->whereDate('clock_in', Carbon::today())->get();
     }
+
+    /**
+     * @param int $workerId
+     * 
+     * @return Collection
+     */
+    public function attendances(int $workerId): Collection
+    {
+        return $this->model->where('worker_id', $workerId)->orderBy('clock_in', 'desc')->get();
+    }
 }

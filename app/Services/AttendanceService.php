@@ -36,4 +36,14 @@ class AttendanceService
             'clock_in'  => Carbon::createFromTimestamp($time)
         ]);
     }
+
+    /**
+     * @param User $user
+     * 
+     * @return Collection
+     */
+    public function workerClockIns(User $user): Collection
+    {
+        return $this->attendanceRepository->attendances($user->id);
+    }
 }

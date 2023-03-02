@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Collections\AttendanceCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClockInRequest;
 use App\Http\Responses\Api\FailedResponse;
@@ -24,7 +25,11 @@ class AttendanceController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json(['status' => 15]);
+        $user = $this->userService->fetchfromApi($request->worker_id);
+
+        $attendances = $this->attendanceService->workerClockIns($user);
+
+        return SuccessResponse::send((new AttendanceCollection($attendances))->toArray());
     }
 
     /**
