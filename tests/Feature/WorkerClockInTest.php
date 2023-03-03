@@ -18,8 +18,8 @@ class WorkerClockInTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->lat = $this->faker->latitude();
-        $this->long = $this->faker->longitude();
+        $this->lat = $this->faker->latitude(30.0493550, 30.049360);
+        $this->long = $this->faker->longitude(31.2403060, 31.2403070);
         $this->workPlace = WorkPlace::factory()
             ->hasWorkers(1)
             ->create(['lat' => $this->lat, 'long' => $this->long]);

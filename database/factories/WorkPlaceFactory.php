@@ -28,16 +28,12 @@ class WorkPlaceFactory extends Factory
     {
         return [
             'title'     => fake()->name(),
-            'slug'      => fake()->unique()->slug(16),
+            'slug'      => fake()->unique()->slug(2),
             'type'      => fake()->randomElement(array_column(WorkPlaceType::cases(), 'value')),
             'active'    => fake()->boolean(90),
             'status'    => fake()->randomElement(array_column(WorkPlaceStatus::cases(), 'value')),
-            'lat'       => function($attributes) {
-                return $attributes['lat'] ?? fake()->latitude(30.0493550, 30.049360);
-            },
-            'long'      => function($attributes) {
-                return $attributes['lat'] ?? fake()->longitude(31.2403060, 31.2403070);
-            },
+            'lat'       => fake()->latitude(30.0493550, 30.049360),
+            'long'      => fake()->longitude(31.2403060, 31.2403070),
         ];
     }
 }

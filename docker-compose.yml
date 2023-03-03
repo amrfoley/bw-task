@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: amrfoley
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: bluworks
+    container_name: bluworks-app
+    restart: unless-stopped
+    working_dir: /var/www/app
+    volumes:
+      - ./:/var/www/app
+    networks:
+      - bluworks
+  db:
+    platform: linux/x86_64
+    image: mysql:8.0
+    container_name: bluworks-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: bluworks
+      MYSQL_ROOT: root
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/mysql/
+    networks:
+      - bluworks
+  nginx:
+    image: nginx:alpine
+    container_name: bluworks-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www/app
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - bluworks
+
+networks:
+  bluworks:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local

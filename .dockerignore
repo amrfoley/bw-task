@@ -1,0 +1,11 @@
+logs/
+.git
+.git*
+*.md
+.cache
+.env*
+Dockerfile
+storage/framework
+storage/logs
+vendor
+node_modules
