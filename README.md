@@ -24,7 +24,7 @@ database to showcase your work.
     6- run "docker exec -it bluworks-app php artisan test"
     7- open "localhost:8000/api/documentation" on browser
 
-# istall without docker
+# install without docker
     1- change DB_HOST in .env to localhost
     2- run "composer install"
     3- run "php artisan key:generate"
