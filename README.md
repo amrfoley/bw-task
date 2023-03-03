@@ -18,14 +18,16 @@ database to showcase your work.
 # install with docker
     1- make sure to stop any local RDB listening to port 3306
     2- run "docker-compose up -d"
-    3- run "docker exec -it bluworks-app php artisan key:generate"
-    4- run "docker exec -it bluworks-app php artisan migrate --seed"
-    5- run "docker exec -it bluworks-app php artisan test"
-    6- open "localhost:8000/api/documentation" on browser
+    3- run "docker exec -it bluworks-app composer install"
+    4- run "docker exec -it bluworks-app php artisan key:generate"
+    5- run "docker exec -it bluworks-app php artisan migrate --seed"
+    6- run "docker exec -it bluworks-app php artisan test"
+    7- open "localhost:8000/api/documentation" on browser
 
 # istall without docker
     1- change DB_HOST in .env to localhost
-    2- run "php artisan key:generate"
-    3- run "php artisan migrate --seed"
-    4- run "php artisan test"
-    5- open "localhost:8000/api/documentation" on browser
+    2- run "composer install"
+    3- run "php artisan key:generate"
+    4- run "php artisan migrate --seed"
+    5- run "php artisan test"
+    6- open "localhost:8000/api/documentation" on browser
